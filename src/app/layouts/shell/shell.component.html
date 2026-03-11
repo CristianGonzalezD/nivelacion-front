@@ -1,0 +1,64 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <div>
+      <div class="brand-block">
+        <img class ="brand-logo" src="/logo_horizontal.png" alt="Logo FrontPedidos" />
+      </div>
+
+      <nav class="module-nav" aria-label="Modulos principales">
+        <a
+          class="module-link"
+          routerLink="/inicio"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <span class="module-icon" aria-hidden="true">
+            <i class="bi bi-house-door-fill"></i>
+          </span>
+          <div>
+            <strong>Bienvenida</strong>
+          </div>
+        </a>
+        <a class="module-link" routerLink="/productos" routerLinkActive="active">
+          <span class="module-icon" aria-hidden="true">
+            <i class="bi bi-list-task"></i>
+          </span>
+          <div>
+            <strong>Productos</strong>
+          </div>
+        </a>
+        <div class="module-link module-link-disabled">
+          <span class="module-icon" aria-hidden="true">
+            <i class="bi bi-bag-check-fill"></i>
+          </span>
+          <div>
+            <strong>Pedidos</strong>
+          </div>
+        </div>
+        <div class="module-link module-link-disabled">
+          <span class="module-icon" aria-hidden="true">
+            <i class="bi bi-envelope-fill"></i>
+          </span>
+          <div>
+            <strong>Contacto</strong>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="sidebar-card text-center">
+      <p class="sidebar-card-label">Sesion activa</p>
+      <h2 class = "text-uppercase">
+        <i class="bi bi-person-circle"></i>
+        {{ currentUser() || 'Usuario autenticado' }}
+      </h2>
+      <button type="button" class="btn btn-light w-100" (click)="logout()">
+        Cerrar sesion
+      </button>
+    </div>
+  </aside>
+
+  <main class="content-panel">
+    <router-outlet />
+  </main>
+</div>

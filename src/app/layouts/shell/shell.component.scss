@@ -1,0 +1,177 @@
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  background:
+    linear-gradient(180deg, rgba(8, 32, 63, 0.98), rgba(18, 61, 109, 0.96)),
+    #0d2f57;
+  color: #f8fbff;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.14);
+  padding: 0.5rem 0.75rem;
+}
+
+.brand-badge {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.14);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.brand-eyebrow,
+.sidebar-card-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.brand-title {
+  margin: 0.15rem 0 0;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.sidebar-copy {
+  margin-bottom: 1.75rem;
+  color: rgba(248, 251, 255, 0.78);
+  line-height: 1.6;
+}
+
+.module-nav {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.module-link {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.1rem;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.module-link:hover,
+.module-link.active {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.module-link-disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.module-link-disabled:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.module-link strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.module-link small {
+  color: rgba(248, 251, 255, 0.72);
+}
+
+.module-icon {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.module-icon i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.sidebar-card {
+  padding: 1.25rem;
+  border-radius: 1.35rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(248, 251, 255, 0.86);
+}
+
+.sidebar-card h2 {
+  margin-top: 0.35rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  word-break: break-word;
+}
+
+.content-panel {
+  padding: 2rem;
+}
+
+@media (max-width: 991.98px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 1.5rem;
+  }
+
+  .content-panel {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .sidebar,
+  .content-panel {
+    padding: 1.2rem;
+  }
+
+  .brand-block {
+    align-items: flex-start;
+  }
+
+  .brand-logo {
+    max-width: 210px;
+  }
+}

@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@use "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --app-bg: #eef3f9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fbff 0%, var(--app-bg) 100%);
+  color: #212529;
+}

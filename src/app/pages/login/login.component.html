@@ -1,0 +1,60 @@
+<section class="login-shell">
+  <div class="login-card">
+    <div class="login-card-header">
+      <i class="bi bi-shield-lock-fill"></i>
+      <div>
+        <p class="section-label mb-1">Acceso</p>
+        <h2>Iniciar sesion</h2>
+      </div>
+    </div>
+
+    <p class="login-intro">
+      Ingresa tus credenciales para acceder al sistema.
+    </p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate>
+      <div class="mb-3">
+        <label class="form-label" for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          formControlName="username"
+          placeholder="Ingresa tu usuario"
+        />
+        @if (loginForm.controls.username.touched && loginForm.controls.username.invalid) {
+          <div class="field-error">Ingresa un username valido.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="password">Contrasena</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Ingresa tu contrasena"
+        />
+        @if (loginForm.controls.password.touched && loginForm.controls.password.invalid) {
+          <div class="field-error">La contrasena debe tener al menos 6 caracteres.</div>
+        }
+      </div>
+
+      @if (loginError()) {
+        <div class="alert alert-danger" role="alert">
+          {{ loginError() }}
+        </div>
+      }
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="isSubmitting()">
+        @if (isSubmitting()) {
+          <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+          Validando...
+        } @else {
+          Ingresar
+        }
+      </button>
+    </form>
+  </div>
+</section>

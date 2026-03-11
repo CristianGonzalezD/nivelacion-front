@@ -1,0 +1,147 @@
+.welcome-panel,
+.info-banner {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1.75rem;
+}
+
+.welcome-panel {
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+  margin-bottom: 1.75rem;
+  background:
+    radial-gradient(circle at top right, rgba(13, 110, 253, 0.14), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  border: 1px solid rgba(13, 110, 253, 0.08);
+  box-shadow: 0 18px 45px rgba(12, 38, 74, 0.08);
+}
+
+.section-pill,
+.feature-tag,
+.feature-tag-link {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.section-pill {
+  margin-bottom: 1rem;
+  padding: 0.45rem 0.9rem;
+  background: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+.welcome-copy h2 {
+  font-size: clamp(2rem, 2.8vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.welcome-copy p,
+.feature-card p,
+.summary-card,
+.info-banner p {
+  color: #5b6472;
+  line-height: 1.7;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.summary-label,
+.feature-label,
+.info-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.summary-card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: #0f2744;
+  color: #eef5ff;
+}
+
+.summary-card h3 {
+  margin-top: 0.35rem;
+  font-weight: 700;
+}
+
+.summary-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.summary-list li + li {
+  margin-top: 0.65rem;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.feature-card {
+  padding: 1.6rem;
+  border-radius: 1.5rem;
+  background: #ffffff;
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  box-shadow: 0 12px 30px rgba(16, 40, 71, 0.06);
+}
+
+.feature-card h3,
+.info-banner h3 {
+  margin-top: 0.35rem;
+  font-weight: 700;
+}
+
+.feature-tag,
+.feature-tag-link {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: #edf4ff;
+  color: #2359b8;
+  text-decoration: none;
+}
+
+.info-banner {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.9fr);
+  align-items: center;
+  background: linear-gradient(135deg, #0d6efd, #0f4da8);
+  color: #ffffff;
+}
+
+.info-banner p,
+.info-banner .info-label {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (max-width: 991.98px) {
+  .welcome-panel,
+  .module-grid,
+  .info-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .welcome-panel,
+  .info-banner,
+  .feature-card {
+    padding: 1.2rem;
+  }
+
+  .welcome-copy h2 {
+    font-size: 1.9rem;
+  }
+}

@@ -1,59 +1,111 @@
 # FrontApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+Frontend base construido con Angular 21, Bootstrap 5 y Bootstrap Icons. El proyecto arranca con una pantalla de bienvenida, una barra lateral de navegacion y un modulo de prueba para listar productos en una tabla.
 
-## Development server
+## Objetivo
 
-To start a local development server, run:
+Servir como base para un sistema frontend que pueda crecer con modulos como:
 
-```bash
-ng serve
-```
+- bienvenida o dashboard inicial
+- listado de productos
+- gestion de pedidos
+- contacto o soporte
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tecnologias
 
-## Code scaffolding
+- Angular 21
+- TypeScript
+- Bootstrap 5
+- Bootstrap Icons
+- npm
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Requisitos
 
-```bash
-ng generate component component-name
-```
+- Node.js 22 LTS recomendado
+- npm 10 o superior
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Instalacion
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Clona el repositorio e instala las dependencias:
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Ejecucion en desarrollo
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Inicia el servidor local con:
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Luego abre:
 
-For end-to-end (e2e) testing, run:
+```text
+http://localhost:4200/
+```
+
+## Compilacion
+
+Para generar el build de produccion:
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+La salida se genera en:
 
-## Additional Resources
+```text
+dist/front-app
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Scripts disponibles
+
+- `npm start`: inicia la aplicacion en modo desarrollo
+- `npm run build`: compila el proyecto
+- `npm run watch`: compila en modo observacion
+- `npm test`: ejecuta pruebas
+
+## Estructura actual
+
+```text
+src/
+  app/
+    app.html
+    app.scss
+    app.routes.ts
+    app.ts
+    pages/
+      home/
+      products/
+```
+
+## Rutas actuales
+
+- `/`: pantalla de bienvenida
+- `/productos`: modulo de prueba con tabla de productos
+
+## Estructura funcional
+
+- `App`: layout principal con sidebar y `router-outlet`
+- `HomeComponent`: vista inicial del sistema
+- `ProductsComponent`: modulo de prueba para validar navegacion y estructura
+
+## Buenas practicas para versionado
+
+- No subir `node_modules`, `dist` ni `.angular`
+- Mantener commits pequenos y con mensajes claros
+- Versionar `package-lock.json`
+- Ejecutar `npm run build` antes de subir cambios importantes
+
+## Proximos pasos sugeridos
+
+- crear rutas reales para `pedidos` y `contacto`
+- mover datos de productos a un servicio
+- conectar una API para listado real
+- agregar formularios y validaciones
+
+## Autor
+
+Proyecto academico/base de practica sobre Angular con Bootstrap.
