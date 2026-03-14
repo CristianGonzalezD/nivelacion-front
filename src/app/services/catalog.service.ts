@@ -23,6 +23,7 @@ export class CatalogService {
       throw new Error('Error en consumo de servicio.');
     }
 
+    
     if (response.length === 0) {
       throw new Error('No existen productos en el sistema.');
     }
