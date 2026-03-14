@@ -1,27 +1,57 @@
-import { Component } from '@angular/core';
-import { CurrencyPipe, NgClass } from '@angular/common';
-
-interface Product {
-  id: number;
-  nombre: string;
-  categoria: string;
-  precio: number;
-  stock: number;
-  estado: 'Activo' | 'Bajo stock' | 'Agotado';
-}
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { CurrencyPipe} from '@angular/common';
+import { Product } from '../../interfaces/catalog/product.interface';
+import { CatalogService } from '../../services/catalog.service';
 
 @Component({
   selector: 'app-products',
-  imports: [CurrencyPipe, NgClass],
+  imports: [CurrencyPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent {
-  protected readonly products: Product[] = [
-    { id: 101, nombre: 'Mouse Inalambrico', categoria: 'Accesorios', precio: 85000, stock: 24, estado: 'Activo' },
-    { id: 102, nombre: 'Teclado Mecanico', categoria: 'Perifericos', precio: 185000, stock: 9, estado: 'Bajo stock' },
-    { id: 103, nombre: 'Monitor 24 pulgadas', categoria: 'Pantallas', precio: 690000, stock: 6, estado: 'Bajo stock' },
-    { id: 104, nombre: 'Base Refrigerante', categoria: 'Accesorios', precio: 120000, stock: 15, estado: 'Activo' },
-    { id: 105, nombre: 'Diadema USB', categoria: 'Audio', precio: 98000, stock: 0, estado: 'Agotado' }
-  ];
+export class ProductsComponent implements OnInit{
+
+  private readonly catalogService = inject(CatalogService);
+
+  protected readonly products = signal<Product[]>([]);
+  protected readonly loading = signal(false);
+  protected readonly errorMessage = signal('');
+
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  private loadProducts(): void {
+    this.loading.set(true);
+    this.errorMessage.set('');
+
+    this.catalogService.getProducts().subscribe({
+      next: (products) => {
+        console.log('Productos recibidos:', products);
+        this.products.set(products);
+        this.loading.set(false);
+      },
+      error: (error: unknown) => {
+        this.loading.set(false);
+        this.errorMessage.set(this.resolveErrorMessage(error));
+        console.error(error);
+      }
+    });
+  }
+
+  private resolveErrorMessage(error: unknown): string {
+    if (typeof error === 'object' && error !== null) {
+      const maybeError = error as { status?: number };
+
+      if (maybeError.status === 0) {
+        return 'No fue posible conectar con el servicio de catalogo.';
+      }
+
+      if (maybeError.status === 401 || maybeError.status === 403) {
+        return 'La sesion no tiene permisos para consultar el catalogo.';
+      }
+    }
+
+    return 'No fue posible cargar los productos.';
+  }
 }
